@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ZXingAndroid.iml" filepath="$PROJECT_DIR$/ZXingAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-core/android-core.iml" filepath="$PROJECT_DIR$/android-core/android-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-integration/android-integration.iml" filepath="$PROJECT_DIR$/android-integration/android-integration.iml" />
       <module fileurl="file://$PROJECT_DIR$/barcode-scanner/barcode-scanner.iml" filepath="$PROJECT_DIR$/barcode-scanner/barcode-scanner.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
     </modules>

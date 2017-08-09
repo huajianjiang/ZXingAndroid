@@ -1,1 +1,1 @@
-include ':barcode-scanner', ':core', ':android-core'
+include ':barcode-scanner', ':core', ':android-core', ':android-integration'

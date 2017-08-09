@@ -144,20 +144,20 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\1df0b465e09db1126b8bbbeeaaf92b2db9d7b7db\\output\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
-        "merged": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\res\\merged\\debug\\layout\\share.xml",
-        "source": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\src\\main\\res\\layout\\share.xml"
-    },
-    {
         "merged": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\0b21a14d9762db7efef94e62ad057e7b7cc4ea4c\\output\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
-        "merged": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\res\\merged\\debug\\layout\\bookmark_picker_list_item.xml",
-        "source": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\src\\main\\res\\layout\\bookmark_picker_list_item.xml"
+        "merged": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\res\\merged\\debug\\layout\\share.xml",
+        "source": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\src\\main\\res\\layout\\share.xml"
     },
     {
         "merged": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\0b21a14d9762db7efef94e62ad057e7b7cc4ea4c\\output\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\res\\merged\\debug\\layout\\bookmark_picker_list_item.xml",
+        "source": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\src\\main\\res\\layout\\bookmark_picker_list_item.xml"
     },
     {
         "merged": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",

@@ -1,4 +1,0 @@
-#Wed Aug 09 17:27:53 CST 2017
-base.0=D\:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_4
-renamed.0=classes.dex
-file.0=D\:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_4\\classes.dex

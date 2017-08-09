@@ -92,12 +92,12 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\0b21a14d9762db7efef94e62ad057e7b7cc4ea4c\\output\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
-        "merged": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\res\\merged\\debug\\drawable\\share_via_barcode.png",
-        "source": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\src\\main\\res\\drawable\\share_via_barcode.png"
-    },
-    {
         "merged": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\0b21a14d9762db7efef94e62ad057e7b7cc4ea4c\\output\\res\\drawable\\abc_ic_clear_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\res\\merged\\debug\\drawable\\share_via_barcode.png",
+        "source": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\src\\main\\res\\drawable\\share_via_barcode.png"
     },
     {
         "merged": "D:\\Android\\Github\\ZXingAndroid\\barcode-scanner\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",

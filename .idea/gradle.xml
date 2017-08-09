@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/android-core" />
+            <option value="$PROJECT_DIR$/android-integration" />
             <option value="$PROJECT_DIR$/barcode-scanner" />
             <option value="$PROJECT_DIR$/core" />
           </set>
