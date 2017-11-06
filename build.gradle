@@ -13,3 +13,8 @@ allprojects {
         jcenter()
     }
 }
+gradle.properties
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
