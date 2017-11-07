@@ -76,6 +76,7 @@ final class CameraConfigurationManager {
       default:
         // Have seen this return incorrect values like -90
         if (displayRotation % 90 == 0) {
+          Log.i(TAG, "Incorrect displayRotation: " + displayRotation);
           cwRotationFromNaturalToDisplay = (360 + displayRotation) % 360;
         } else {
           throw new IllegalArgumentException("Bad rotation: " + displayRotation);

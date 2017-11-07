@@ -170,8 +170,10 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
     if (prefs.getBoolean(PreferencesActivity.KEY_DISABLE_AUTO_ORIENTATION, true)) {
+      Log.e(TAG,"AUTO_ORIENTATION");
       setRequestedOrientation(getCurrentOrientation());
     } else {
+      Log.e(TAG,"SENSOR_LANDSCAPE");
       setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
     }
 
@@ -271,16 +273,20 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
       switch (rotation) {
         case Surface.ROTATION_0:
         case Surface.ROTATION_90:
+          Log.e(TAG, "L: " + rotation);
           return ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
         default:
+          Log.e(TAG, "LR: " + rotation);
           return ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE;
       }
     } else {
       switch (rotation) {
         case Surface.ROTATION_0:
         case Surface.ROTATION_270:
+          Log.e(TAG, "P: " + rotation);
           return ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
         default:
+          Log.e(TAG, "PR: " + rotation);
           return ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT;
       }
     }
