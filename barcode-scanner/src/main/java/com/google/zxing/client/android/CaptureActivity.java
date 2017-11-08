@@ -171,7 +171,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
     if (prefs.getBoolean(PreferencesActivity.KEY_DISABLE_AUTO_ORIENTATION, true)) {
       Log.e(TAG,"AUTO_ORIENTATION");
-      setRequestedOrientation(getCurrentOrientation());
+     // setRequestedOrientation();
+     getCurrentOrientation();
     } else {
       Log.e(TAG,"SENSOR_LANDSCAPE");
       setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);

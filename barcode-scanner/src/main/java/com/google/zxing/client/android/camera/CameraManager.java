@@ -67,7 +67,7 @@ public final class CameraManager {
     this.configManager = new CameraConfigurationManager(context);
     previewCallback = new PreviewCallback(configManager);
   }
-  
+
   /**
    * Opens the camera driver and initializes the hardware parameters.
    *
@@ -118,6 +118,7 @@ public final class CameraManager {
     }
     cameraObject.setPreviewDisplay(holder);
 
+    Log.e(TAG, "Camera orientation: " + camera.getOrientation()+",");
   }
 
   public synchronized boolean isOpen() {
