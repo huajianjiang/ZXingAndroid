@@ -12,30 +12,41 @@ import java.io.IOException;
  * developer.huajianjiang@gmail.com
  */
 public class CameraHelper {
-    public static final int UNSPECIFIED_CAMERA_ID = -1;
 
     private CameraHelper() {
     }
 
-    public void open(SurfaceHolder surface) throws IOException {
-        open(UNSPECIFIED_CAMERA_ID, surface);
+    public static void open(SurfaceHolder surface) throws IOException {
+        open(0, surface);
     }
 
-    public void open(CameraFacing facing, SurfaceHolder surface) throws IOException {
+    public static void open(CameraFacing facing, SurfaceHolder surface) throws IOException {
         open(facing.cameraId(), surface);
     }
 
-    public void open(int cameraId, SurfaceHolder surface) throws IOException {
+    public static ActiveCameraManager open(int cameraId, SurfaceHolder surface)
+            throws IOException, RuntimeException
+    {
         final int cameraNumber = Camera.getNumberOfCameras();
         final boolean validCamera = 0 <= cameraId && cameraId < cameraNumber - 1;
         cameraId = validCamera ? cameraId : 0;
+
+        Camera camera = Camera.open(cameraId);
+        if (camera == null) {
+            throw new IOException();
+        }
+
         Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
         Camera.getCameraInfo(cameraId, cameraInfo);
 
-        Camera camera = Camera.open(cameraId);
         camera.setPreviewDisplay(surface);
-    }
 
+        ActiveCamera activeCamera =
+                new ActiveCamera(cameraId, CameraFacing.facing(cameraId), cameraInfo.orientation,
+                                 camera);
+
+        return new ActiveCameraManager(activeCamera);
+    }
 
 }
 

@@ -2,34 +2,41 @@ package com.huajianjiang.barcoder.ui.widget;
 
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.huajianjiang.barcoder.contract.ScanContract;
+
 /**
  * Created by Huajian Jiang on 2017/11/8.
  * developer.huajianjiang@gmail.com
  */
-public class BarcodeView extends SurfaceView {
+public class PreviewView extends SurfaceView
+        implements ScanContract.IView<ScanContract.IPresenter>
+{
+    private ScanContract.IPresenter mPresenter;
+
     private SurfaceHolder mHolder;
     private SurfaceCallback mCallback;
 
-    public BarcodeView(Context context) {
+    public PreviewView(Context context) {
         this(context, null);
     }
 
-    public BarcodeView(Context context, AttributeSet attrs) {
+    public PreviewView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public BarcodeView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PreviewView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public BarcodeView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public PreviewView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
     }
@@ -40,12 +47,22 @@ public class BarcodeView extends SurfaceView {
         mHolder.addCallback(mCallback);
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        mHolder.removeCallback(mCallback);
+    }
+
+    @Override
+    public void bindPresenter(@NonNull ScanContract.IPresenter presenter) {
+        mPresenter = presenter;
+    }
 
     private class SurfaceCallback implements SurfaceHolder.Callback {
 
         @Override
         public void surfaceCreated(SurfaceHolder surfaceHolder) {
-
+            mPresenter.initCamera(surfaceHolder);
         }
 
         @Override
@@ -55,14 +72,8 @@ public class BarcodeView extends SurfaceView {
 
         @Override
         public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
-
+            mPresenter.stopScanning();
         }
-    }
-
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        mHolder.removeCallback(mCallback);
     }
 
 }

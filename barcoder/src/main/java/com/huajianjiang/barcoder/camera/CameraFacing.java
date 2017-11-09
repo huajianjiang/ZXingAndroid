@@ -5,7 +5,7 @@ package com.huajianjiang.barcoder.camera;
  * developer.huajianjiang@gmail.com
  */
 public enum CameraFacing {
-    BACK(0), FRONT(1);
+    BACK(0), FRONT(1), UNKNOWN(-1);
 
     private final int mId;
 
@@ -15,5 +15,17 @@ public enum CameraFacing {
 
     public int cameraId() {
         return mId;
+    }
+
+    public static CameraFacing facing(int cameraId) {
+        CameraFacing facing;
+        if (cameraId == 0) {
+            facing = BACK;
+        } else if (cameraId == 1) {
+            facing = FRONT;
+        } else {
+            facing = UNKNOWN;
+        }
+        return facing;
     }
 }
