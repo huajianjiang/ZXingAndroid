@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.huajianjiang.barcoder.contract.BaseContract;
 import com.huajianjiang.barcoder.contract.ScanContract;
 
 /**
@@ -15,10 +16,11 @@ import com.huajianjiang.barcoder.contract.ScanContract;
  * developer.huajianjiang@gmail.com
  */
 public class PreviewView extends SurfaceView
-        implements ScanContract.IView<ScanContract.IPresenter>
+        implements BaseContract.BaseIView<ScanContract.IPresenter>
 {
     private ScanContract.IPresenter mPresenter;
 
+    private boolean mIsSurfaceAvailable = false;
     private SurfaceHolder mHolder;
     private SurfaceCallback mCallback;
 
@@ -47,6 +49,10 @@ public class PreviewView extends SurfaceView
         mHolder.addCallback(mCallback);
     }
 
+    public boolean isSurfaceAvailable() {
+        return mIsSurfaceAvailable;
+    }
+
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
@@ -62,6 +68,7 @@ public class PreviewView extends SurfaceView
 
         @Override
         public void surfaceCreated(SurfaceHolder surfaceHolder) {
+            mIsSurfaceAvailable = true;
             mPresenter.initCamera(surfaceHolder);
         }
 
@@ -72,7 +79,8 @@ public class PreviewView extends SurfaceView
 
         @Override
         public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
-            mPresenter.stopScanning();
+            mIsSurfaceAvailable = false;
+            mPresenter.stopPreview();
         }
     }
 

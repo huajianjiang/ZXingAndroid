@@ -16,15 +16,15 @@ public class CameraHelper {
     private CameraHelper() {
     }
 
-    public static void open(SurfaceHolder surface) throws IOException {
+    public  void open(SurfaceHolder surface) throws IOException {
         open(0, surface);
     }
 
-    public static void open(CameraFacing facing, SurfaceHolder surface) throws IOException {
+    public  void open(CameraFacing facing, SurfaceHolder surface) throws IOException {
         open(facing.cameraId(), surface);
     }
 
-    public static ActiveCameraManager open(int cameraId, SurfaceHolder surface)
+    public  ActiveCameraManager open(int cameraId, SurfaceHolder surface)
             throws IOException, RuntimeException
     {
         final int cameraNumber = Camera.getNumberOfCameras();
@@ -47,6 +47,7 @@ public class CameraHelper {
 
         return new ActiveCameraManager(activeCamera);
     }
+
 
 }
 

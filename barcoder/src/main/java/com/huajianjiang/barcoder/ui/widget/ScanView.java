@@ -1,5 +1,6 @@
 package com.huajianjiang.barcoder.ui.widget;
 
+
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.Nullable;
@@ -8,10 +9,12 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * Created by Huajian Jiang on 2017/11/8.
- * developer.huajianjiang@gmail.com
+ * <p>Author: Huajian Jiang
+ * <br>Date: 2017/11/9
+ * <br>Email: developer.huajianjiang@gmail.com
  */
 public class ScanView extends View {
+
     public ScanView(Context context) {
         super(context);
     }
@@ -31,4 +34,5 @@ public class ScanView extends View {
     {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
+
 }

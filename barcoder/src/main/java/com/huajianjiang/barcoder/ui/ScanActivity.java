@@ -5,18 +5,20 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.huajianjiang.barcoder.R;
-import com.huajianjiang.barcoder.contract.ScanComponentContract;
+import com.huajianjiang.barcoder.contract.ScanContract;
 import com.huajianjiang.barcoder.model.ScanResult;
-import com.huajianjiang.barcoder.presenter.CameraPresenter;
+import com.huajianjiang.barcoder.presenter.ScanPresenter;
 import com.huajianjiang.barcoder.ui.widget.PreviewView;
+import com.huajianjiang.barcoder.util.Msgs;
+import com.huajianjiang.barcoder.util.Sys;
 import com.huajianjiang.barcoder.util.Views;
 
 /**
  * Created by Huajian Jiang on 2017/11/8.
  * developer.huajianjiang@gmail.com
  */
-public class ScanActivity extends BaseMvpActivity<ScanComponentContract.IPresenter>
-        implements ScanComponentContract.IView
+public class ScanActivity extends BaseMvpActivity<ScanContract.IPresenter>
+        implements ScanContract.IView
 {
     private PreviewView mPreviewView;
 
@@ -24,6 +26,19 @@ public class ScanActivity extends BaseMvpActivity<ScanComponentContract.IPresent
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sacn);
+        checkFeature();
+    }
+
+    private void checkFeature() {
+        if (!Sys.hasCamreaFeature(this)) {
+            Msgs.shortToast(this, "Camera not available");
+            finish();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         initView();
     }
 
@@ -34,24 +49,26 @@ public class ScanActivity extends BaseMvpActivity<ScanComponentContract.IPresent
 
     @NonNull
     @Override
-    public ScanComponentContract.IPresenter createPresenter() {
-        return new CameraPresenter();
+    public ScanContract.IPresenter createPresenter() {
+        return new ScanPresenter();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        if (mPreviewView.isSurfaceAvailable()) {
+            presenter.initCamera(mPreviewView.getHolder());
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        presenter.stopPreviewAndFreeCamera();
     }
-
 
     @Override
     public void onScanResultAvailable(ScanResult result) {
 
     }
-
 }
