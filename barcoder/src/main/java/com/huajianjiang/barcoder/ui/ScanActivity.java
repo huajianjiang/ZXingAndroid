@@ -29,17 +29,24 @@ public class ScanActivity extends BaseMvpActivity<ScanContract.IPresenter>
         checkFeature();
     }
 
-    private void checkFeature() {
-        if (!Sys.hasCamreaFeature(this)) {
-            Msgs.shortToast(this, "Camera not available");
-            finish();
-        }
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
         initView();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mPreviewView.isSurfaceAvailable()) {
+            presenter.initAndPreviewCamera(mPreviewView.getHolder());
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        presenter.stopPreviewAndFreeCamera();
     }
 
     private void initView() {
@@ -53,22 +60,19 @@ public class ScanActivity extends BaseMvpActivity<ScanContract.IPresenter>
         return new ScanPresenter();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (mPreviewView.isSurfaceAvailable()) {
-            presenter.initCamera(mPreviewView.getHolder());
+    /**
+     * 检查设备是否有 camera 硬件
+     */
+    private void checkFeature() {
+        if (!Sys.hasCamreaFeature(this)) {
+            Msgs.shortToast(this, "Camera not available");
+            finish();
         }
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        presenter.stopPreviewAndFreeCamera();
-    }
-
-    @Override
     public void onScanResultAvailable(ScanResult result) {
-
+        mPreviewView.onScanResultAvailable(result);
     }
+
 }

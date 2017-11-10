@@ -13,19 +13,33 @@ import java.io.IOException;
  */
 public class CameraHelper {
 
-    private CameraHelper() {
-    }
-
-    public  void open(SurfaceHolder surface) throws IOException {
+    /**
+     * 初始化 camera ，打开 camera 驱动
+     * @param surface 显示 camera 预览的 surface
+     * @throws IOException
+     */
+    public void open(SurfaceHolder surface) throws IOException {
         open(0, surface);
     }
 
-    public  void open(CameraFacing facing, SurfaceHolder surface) throws IOException {
+    /**
+     * @param facing
+     * @param surface
+     * @throws IOException
+     */
+    public void open(CameraFacing facing, SurfaceHolder surface) throws IOException {
         open(facing.cameraId(), surface);
     }
 
-    public  ActiveCameraManager open(int cameraId, SurfaceHolder surface)
-            throws IOException, RuntimeException
+    /**
+     * @param cameraId
+     * @param surface
+     * @return
+     * @throws IOException
+     * @throws RuntimeException
+     */
+    public ActiveCameraManager open(int cameraId, SurfaceHolder surface) throws IOException,
+            RuntimeException
     {
         final int cameraNumber = Camera.getNumberOfCameras();
         final boolean validCamera = 0 <= cameraId && cameraId < cameraNumber - 1;
@@ -41,13 +55,11 @@ public class CameraHelper {
 
         camera.setPreviewDisplay(surface);
 
-        ActiveCamera activeCamera =
-                new ActiveCamera(cameraId, CameraFacing.facing(cameraId), cameraInfo.orientation,
-                                 camera);
+        ActiveCamera activeCamera = new ActiveCamera(cameraId, CameraFacing.facing(cameraId),
+                cameraInfo.orientation, camera);
 
         return new ActiveCameraManager(activeCamera);
     }
-
 
 }
 

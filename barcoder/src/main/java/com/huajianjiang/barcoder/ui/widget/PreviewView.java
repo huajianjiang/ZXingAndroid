@@ -8,16 +8,14 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.huajianjiang.barcoder.contract.BaseContract;
 import com.huajianjiang.barcoder.contract.ScanContract;
+import com.huajianjiang.barcoder.model.ScanResult;
 
 /**
  * Created by Huajian Jiang on 2017/11/8.
  * developer.huajianjiang@gmail.com
  */
-public class PreviewView extends SurfaceView
-        implements BaseContract.BaseIView<ScanContract.IPresenter>
-{
+public class PreviewView extends SurfaceView implements ScanContract.IView {
     private ScanContract.IPresenter mPresenter;
 
     private boolean mIsSurfaceAvailable = false;
@@ -64,23 +62,29 @@ public class PreviewView extends SurfaceView
         mPresenter = presenter;
     }
 
-    private class SurfaceCallback implements SurfaceHolder.Callback {
+    @Override
+    public void onScanResultAvailable(ScanResult result) {
 
+    }
+
+
+    private class SurfaceCallback implements SurfaceHolder.Callback {
         @Override
         public void surfaceCreated(SurfaceHolder surfaceHolder) {
             mIsSurfaceAvailable = true;
-            mPresenter.initCamera(surfaceHolder);
+            mPresenter.initAndPreviewCamera(surfaceHolder);
         }
 
         @Override
         public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
-
+            mPresenter.stopPreview();
+            mPresenter.startPreview();
         }
 
         @Override
         public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
             mIsSurfaceAvailable = false;
-            mPresenter.stopPreview();
+            mPresenter.stopPreviewAndFreeCamera();
         }
     }
 

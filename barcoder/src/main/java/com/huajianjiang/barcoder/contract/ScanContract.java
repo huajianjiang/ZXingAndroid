@@ -15,7 +15,7 @@ public interface ScanContract {
     }
 
     interface IPresenter extends BaseContract.BaseIPresenter<IView> {
-        void initCamera(SurfaceHolder display);
+        void initAndPreviewCamera(SurfaceHolder display);
 
         void startPreview();
 
